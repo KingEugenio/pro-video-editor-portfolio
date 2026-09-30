@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineFolio | Pure HTML5 Video Editor & Filmmaker Portfolio</title>
+  <meta name="description" content="Pure HTML5 video editing & cinematic storytelling portfolio. Built with semantic HTML5 standards, high-performance media embedding, and responsive dark aesthetics.">
+  <meta property="og:title" content="CineFolio - Pure HTML5 Video Editor Portfolio">
+  <meta property="og:description" content="Cinematic commercial, narrative, and social video editing portfolio in pure HTML5.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#07070a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --secondary: #a855f7;
+      --accent: #f59e0b;
+      --bg: #050508;
+      --surface: #0e0e14;
+      --surface-elevated: #161622;
+      --border: rgba(255, 255, 255, 0.09);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-display: 'Cinzel', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: none;
+      cursor: pointer;
+      background: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Semantic Header & Navigation */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(14, 14, 20, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.75rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .brand-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 900;
+      font-size: 0.8rem;
+    }
+
+    nav.primary-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    nav.primary-nav a {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    nav.primary-nav a:hover,
+    nav.primary-nav a.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: #000;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    section.hero-section {
+      padding: 10rem 0 5rem 0;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #10b981;
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      margin-bottom: 1.5rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline span.highlight {
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Semantic dl stats */
+    dl.stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    dl.stats-grid dt {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+    }
+
+    dl.stats-grid dd {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      margin-top: 0.25rem;
+    }
+
+    /* Video Player Figure */
+    figure.showreel-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    figure.showreel-frame video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
+    figure.showreel-frame figcaption {
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: rgba(14, 14, 20, 0.9);
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Portfolio Section & Filter */
+    section.work-section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    nav.filter-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav.filter-nav button {
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    nav.filter-nav button:hover,
+    nav.filter-nav button.active {
+      background: var(--primary);
+      color: #000;
+      font-weight: 700;
+      border-color: var(--primary);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.75rem;
+    }
+
+    article.project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    article.project-card:hover {
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    article.project-card figure {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: #000;
+    }
+
+    article.project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    article.project-card:hover img {
+      transform: scale(1.04);
+    }
+
+    article.project-card .card-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-family: var(--font-heading);
+      border: 1px solid var(--border);
+    }
+
+    article.project-card figcaption {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    article.project-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0.4rem 0;
+    }
+
+    article.project-card p.project-brief {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    article.project-card .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Services Section */
+    section.services-section {
+      padding: 6rem 0;
+      background: rgba(14, 14, 20, 0.4);
+      border-top: 1px solid var(--border);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    article.service-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    article.service-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-4px);
+    }
+
+    article.service-card header .service-num {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    article.service-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    article.service-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    article.service-card footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Testimonials */
+    section.testimonials-section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    figure.testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    figure.testimonial-card blockquote {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    figure.testimonial-card figcaption {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    figure.testimonial-card cite {
+      font-style: normal;
+      font-weight: 700;
+      display: block;
+      font-size: 0.9rem;
+    }
+
+    figure.testimonial-card span.client-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Booking Form */
+    section.contact-section {
+      padding: 6rem 0;
+      border-top: 1px solid var(--border);
+      background: radial-gradient(circle at 50% 10%, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    form.booking-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    form.booking-form fieldset {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    form.booking-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    form.booking-form label {
+      display: block;
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    form.booking-form input,
+    form.booking-form select,
+    form.booking-form textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      background: rgba(5, 5, 8, 0.8);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      transition: border-color 0.2s ease;
+    }
+
+    form.booking-form input:focus,
+    form.booking-form select:focus,
+    form.booking-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    form.booking-form button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: var(--radius-sm);
+      margin-top: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    form.booking-form button[type="submit"]:hover {
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Semantic Footer */
+    footer.site-footer {
+      padding: 4rem 0 2rem 0;
+      border-top: 1px solid var(--border);
+      background: #030305;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    nav.footer-nav {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-family: var(--font-heading);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .attribution-link {
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* HTML5 Modal Dialog */
+    dialog.media-modal {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(14, 14, 20, 0.98);
+      color: #fff;
+      padding: 1.5rem;
+      width: 90vw;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(25px);
+    }
+
+    dialog.media-modal::backdrop {
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-close-btn {
+      float: right;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-headline {
+        font-size: 2.5rem;
+      }
+
+      nav.primary-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Semantic HTML5 Header Landmark -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="nav-bar">
+        <a href="#hero" class="brand-logo" aria-label="CineFolio Home">
+          <div class="brand-badge">CF</div>
+          <span>CINEFOLIO</span>
+        </a>
+
+        <!-- Semantic Navigation Landmark -->
+        <nav class="primary-nav" aria-label="Main Navigation">
+          <ul>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a href="#contact" class="btn-cta">Start Project</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Semantic HTML5 Main Landmark -->
+  <main id="main-content" role="main">
+
+    <!-- Hero Section with HTML5 Video Showreel -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <h1 id="hero-title" class="hero-headline">
+              TURNING FOOTAGE INTO <span class="highlight">IMPACT.</span>
+            </h1>
+
+            <p class="hero-desc">
+              High-caliber commercial video editing, narrative continuity, and filmic color grading engineered for global brands, directors, and agencies.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn-cta">Start a Project</a>
+              <a href="#work" class="btn-outline">Explore Selected Work</a>
+            </div>
+
+            <!-- HTML5 Semantic Description List for Stats -->
+            <dl class="stats-grid">
+              <div>
+                <dt>Experience</dt>
+                <dd>8+ Years</dd>
+              </div>
+              <div>
+                <dt>Cuts Delivered</dt>
+                <dd>120+</dd>
+              </div>
+              <div>
+                <dt>Global Clients</dt>
+                <dd>45+</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- HTML5 Semantic Figure with Video -->
+          <figure class="showreel-frame">
+            <video 
+              id="hero-video" 
+              controls 
+              playsinline 
+              preload="metadata"
+              poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1600&auto=format&fit=crop"
+            >
+              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+              Your browser does not support HTML5 video streaming.
+            </video>
+            <figcaption>
+              <span>4K Master Showreel • CineFolio</span>
+              <button type="button" onclick="openShowreelModal()" class="attribution-link" style="font-size:0.75rem;">Theater View</button>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Showcase Section -->
+    <section id="work" class="work-section" aria-labelledby="work-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Curated Showcase</span>
+          <h2 id="work-title" class="section-title">SELECTED WORK</h2>
+          <p class="section-subtitle">Commercials, music videos, social reels, and narrative documentaries crafted with precision timing.</p>
+        </div>
+
+        <!-- HTML5 Category Filter -->
+        <nav class="filter-nav" aria-label="Portfolio Category Filter">
+          <button class="active" onclick="filterProjects('ALL', this)">All</button>
+          <button onclick="filterProjects('Commercial', this)">Commercial</button>
+          <button onclick="filterProjects('Music Video', this)">Music Video</button>
+          <button onclick="filterProjects('Narrative', this)">Narrative</button>
+          <button onclick="filterProjects('Social', this)">Social (9:16)</button>
+        </nav>
+
+        <div class="portfolio-grid" id="portfolio-container">
+          
+          <!-- Article 1 -->
+          <article class="project-card" data-category="Commercial" onclick="openProjectModal('Aura Motors - Beyond Zero', 'Commercial', '2026', 'A futuristic electric hypercar campaign emphasizing hyper-kinetic pacing, match cuts, and atmospheric neon anamorphic lighting.')">
+            <figure>
+              <span class="card-category">Commercial</span>
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1000&auto=format&fit=crop" alt="Aura Motors" loading="lazy">
+            </figure>
+            <figcaption>
+              <div>
+                <time datetime="2026">2026 • Aura Motors</time>
+                <h3>Beyond Zero - EV Launch</h3>
+                <p class="project-brief">Hyper-kinetic automotive campaign combining fast-cut sound design with filmic color balance.</p>
+              </div>
+              <div class="project-meta">
+                <span>Premiere Pro & Resolve</span>
+                <span class="attribution-link">View Case Study →</span>
+              </div>
+            </figcaption>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="project-card" data-category="Music Video" onclick="openProjectModal('Midnight Echoes - Neon Horizon', 'Music Video', '2025', 'Psychedelic rhythm-driven visual piece synced with micro-second beat transients and analog VHS texture blending.')">
+            <figure>
+              <span class="card-category">Music Video</span>
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop" alt="Midnight Echoes" loading="lazy">
+            </figure>
+            <figcaption>
+              <div>
+                <time datetime="2025">2025 • Columbia / Sony</time>
+                <h3>Neon Horizon - Official MV</h3>
+                <p class="project-brief">Psychedelic rhythm-driven visual piece synced with micro-second beat transients.</p>
+              </div>
+              <div class="project-meta">
+                <span>After Effects & DaVinci</span>
+                <span class="attribution-link">View Case Study →</span>
+              </div>
+            </figcaption>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="project-card" data-category="Narrative" onclick="openProjectModal('The Last Artisan - Kyoto Heritage', 'Narrative', '2025', 'Observational documentary exploring century-old woodworking craft in Kyoto through deliberate stillness and rich room-tone audio design.')">
+            <figure>
+              <span class="card-category">Narrative</span>
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1000&auto=format&fit=crop" alt="Kyoto Documentary" loading="lazy">
+            </figure>
+            <figcaption>
+              <div>
+                <time datetime="2025">2025 • NHK World Doc</time>
+                <h3>The Last Artisan - Kyoto</h3>
+                <p class="project-brief">Observational documentary with deliberate pacing and authentic Foley texture.</p>
+              </div>
+              <div class="project-meta">
+                <span>DaVinci Resolve Studio</span>
+                <span class="attribution-link">View Case Study →</span>
+              </div>
+            </figcaption>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="project-card" data-category="Social" onclick="openProjectModal('Apex Apparel - Fall Capsule 9:16', 'Social', '2026', 'High-energy vertical reel engineered for 3-second retention spikes on TikTok and Instagram Reels.')">
+            <figure>
+              <span class="card-category">Social (9:16)</span>
+              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop" alt="Apex Apparel" loading="lazy">
+            </figure>
+            <figcaption>
+              <div>
+                <time datetime="2026">2026 • Apex Streetwear</time>
+                <h3>Fall Capsule - 9:16 Reels</h3>
+                <p class="project-brief">High-energy vertical cuts engineered for 3-second retention spikes.</p>
+              </div>
+              <div class="project-meta">
+                <span>Premiere Pro (9:16)</span>
+                <span class="attribution-link">View Case Study →</span>
+              </div>
+            </figcaption>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Disciplines</span>
+          <h2 id="services-title" class="section-title">SERVICES & RATES</h2>
+          <p class="section-subtitle">End-to-end post-production pipelines tailored for agencies and indie filmmakers.</p>
+        </div>
+
+        <div class="services-grid">
+          
+          <article class="service-card">
+            <header>
+              <span class="service-num">01</span>
+              <h3>Commercial Video Editing</h3>
+              <p>Precision timing, multi-camera assembly, and pacing designed for maximum viewer retention.</p>
+            </header>
+            <footer>
+              <span>Starting at $1,200</span>
+              <a href="#contact" class="btn-outline">Book</a>
+            </footer>
+          </article>
+
+          <article class="service-card">
+            <header>
+              <span class="service-num">02</span>
+              <h3>DaVinci Color Grading</h3>
+              <p>ACES and Rec.709 color pipeline management, shot matching, and custom film emulation prints.</p>
+            </header>
+            <footer>
+              <span>Starting at $800</span>
+              <a href="#contact" class="btn-outline">Book</a>
+            </footer>
+          </article>
+
+          <article class="service-card">
+            <header>
+              <span class="service-num">03</span>
+              <h3>Sound Design & Mix</h3>
+              <p>Bespoke Foley layers, atmospheric soundbeds, dialogue cleanup, and broadcast LUFS mastering.</p>
+            </header>
+            <footer>
+              <span>Starting at $500</span>
+              <a href="#contact" class="btn-outline">Book</a>
+            </footer>
+          </article>
+
+          <article class="service-card">
+            <header>
+              <span class="service-num">04</span>
+              <h3>9:16 Social Multi-Cuts</h3>
+              <p>Converting landscape master showreels into dynamic vertical cuts with animated kinetic typography.</p>
+            </header>
+            <footer>
+              <span>Starting at $650</span>
+              <a href="#contact" class="btn-outline">Book</a>
+            </footer>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Endorsements</span>
+          <h2 id="reviews-title" class="section-title">CLIENT REVIEWS</h2>
+          <p class="section-subtitle">Direct feedback from commercial producers, artists, and agency directors.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <figure class="testimonial-card">
+            <blockquote>
+              "Delivered the 60s national spot three days ahead of schedule. The pacing and match cuts transformed our rough footage into an award-winning campaign."
+            </blockquote>
+            <figcaption>
+              <div>
+                <cite>Elena Rostova</cite>
+                <span class="client-title">Creative Director, Apex Agency</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <blockquote>
+              "The color grading on our feature documentary was pristine. True mastery of skin tones and high-dynamic-range shadow retention."
+            </blockquote>
+            <figcaption>
+              <div>
+                <cite>Marcus Vance</cite>
+                <span class="client-title">Director & Producer, IndieVision</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial-card">
+            <blockquote>
+              "Transformed our raw multi-camera studio session into five viral TikTok and Instagram cuts that garnered over 3 million views in 48 hours."
+            </blockquote>
+            <figcaption>
+              <div>
+                <cite>Chloe Bennett</cite>
+                <span class="client-title">Marketing VP, SoundWave Media</span>
+              </div>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <div>
+            <span class="section-eyebrow">Let's Connect</span>
+            <h2 id="contact-title" class="section-title">COMMISSION A PROJECT</h2>
+            <p style="color:var(--text-muted); margin-bottom: 2rem;">
+              Share your project vision, target timeline, and raw footage link (Google Drive, Frame.io, Dropbox). Guaranteed response within 24 hours.
+            </p>
+
+            <div style="margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <strong style="display:block; font-size: 0.8rem; text-transform:uppercase; color:var(--primary);">Location</strong>
+                <span style="font-size: 0.9rem; color:var(--text-muted);">Los Angeles, CA</span>
+              </div>
+              <div>
+                <strong style="display:block; font-size: 0.8rem; text-transform:uppercase; color:var(--primary);">Turnaround</strong>
+                <span style="font-size: 0.9rem; color:var(--text-muted);">24-hour project quoting and review passes</span>
+              </div>
+            </div>
+
+            <!-- WhatsApp Instant Chat -->
+            <a 
+              href="https://wa.me/15551234567?text=Hi%2C%20I%20am%20interested%20in%20discussing%20a%20video%20editing%20project." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="btn-cta" 
+              style="background:#10b981; color:#fff;"
+            >
+              Direct Chat on WhatsApp
+            </a>
+          </div>
+
+          <!-- HTML5 Form with Fieldset & Native Validation -->
+          <form class="booking-form" id="booking-form" onsubmit="handleFormSubmit(event)">
+            <fieldset>
+              <legend class="section-eyebrow">Project Commission Form</legend>
+
+              <div class="form-row">
+                <div>
+                  <label for="client-name">Your Full Name *</label>
+                  <input type="text" id="client-name" name="name" required placeholder="Jane Doe" autocomplete="name">
+                </div>
+                <div>
+                  <label for="client-email">Email Address *</label>
+                  <input type="email" id="client-email" name="email" required placeholder="jane@studio.com" autocomplete="email">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="project-type">Project Discipline</label>
+                  <select id="project-type" name="type">
+                    <option value="Commercial Video">Commercial Video</option>
+                    <option value="Music Video">Music Video</option>
+                    <option value="Narrative Film">Narrative Film</option>
+                    <option value="Color Grading Pass">Color Grading Pass</option>
+                    <option value="Social Media Multi-Cuts">Social Media Multi-Cuts</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="project-budget">Target Budget (USD)</label>
+                  <select id="project-budget" name="budget">
+                    <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                    <option value="$3,000 - $7,500">$3,000 - $7,500</option>
+                    <option value="$7,500 - $15,000+">$7,500 - $15,000+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="footage-link">Raw Footage Link (Google Drive / Frame.io)</label>
+                <input type="url" id="footage-link" name="footage_url" placeholder="https://drive.google.com/drive/folders/...">
+              </div>
+
+              <div>
+                <label for="project-notes">Project Scope & Deliverable Notes *</label>
+                <textarea id="project-notes" name="notes" rows="4" required placeholder="Target runtime, deadline, music reference, and editing notes..."></textarea>
+              </div>
+
+              <button type="submit">Submit Project Brief</button>
+            </fieldset>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Semantic HTML5 Footer Landmark -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 0.5rem;">CINEFOLIO</div>
+          <p style="font-size: 0.8rem;">Professional Video Editing & Filmic Color Grading Suite</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="current-year">2026</span> CineFolio. Pure HTML5 Edition. All visual rights reserved.</p>
+        
+        <!-- Permanent Developer Attribution Credit -->
+        <div>
+          <span>Powered by CineFolio • </span>
+          <a href="https://instagram.com/ekopixels" target="_blank" rel="noopener noreferrer" class="attribution-link">
+            BUILT BY EKOPIXELS
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- HTML5 Modal Dialog for Case Studies -->
+  <dialog id="project-modal" class="media-modal">
+    <button class="modal-close-btn" onclick="document.getElementById('project-modal').close()" style="display:inline-flex; align-items:center; gap:0.35rem;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <span>CLOSE</span>
+    </button>
+    <div style="padding: 1.5rem 0;">
+      <span id="modal-category" class="section-eyebrow">Category</span>
+      <h2 id="modal-title" style="font-family:var(--font-heading); font-size:2rem; margin: 0.5rem 0;">Project Title</h2>
+      <p id="modal-year" style="color:var(--text-muted); font-size:0.8rem; margin-bottom: 1rem;">2026</p>
+      <p id="modal-desc" style="color:var(--text); line-height:1.7; margin-bottom: 2rem;">Description text...</p>
+      <a href="#contact" onclick="document.getElementById('project-modal').close()" class="btn-cta">Commission Similar Project</a>
+    </div>
+  </dialog>
+
+  <!-- Pure Vanilla JavaScript for HTML5 Interactivity -->
+  <script>
+    // Set dynamic current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Category Filter Handler
+    function filterProjects(category, btn) {
+      document.querySelectorAll('nav.filter-nav button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('article.project-card');
+      cards.forEach(card => {
+        if (category === 'ALL' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Case Study Handler
+    function openProjectModal(title, category, year, desc) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-category').textContent = category;
+      document.getElementById('modal-year').textContent = year;
+      document.getElementById('modal-desc').textContent = desc;
+      document.getElementById('project-modal').showModal();
+    }
+
+    // Open Showreel Modal
+    function openShowreelModal() {
+      const heroVideo = document.getElementById('hero-video');
+      if (heroVideo.requestFullscreen) {
+        heroVideo.requestFullscreen();
+      } else if (heroVideo.webkitRequestFullscreen) {
+        heroVideo.webkitRequestFullscreen();
+      }
+      heroVideo.play();
+    }
+
+    // Form Submission Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('client-name').value;
+      const type = document.getElementById('project-type').value;
+      alert(`Thank you, ${name}! Your project brief for "${type}" has been received. We will respond within 24 hours.`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

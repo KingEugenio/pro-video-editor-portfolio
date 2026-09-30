@@ -1,0 +1,20 @@
+# CineFolio Video Editor & Colorist Portfolio
+# https://cinefolio.portfolio
+
+User-agent: *
+Allow: /
+Allow: /#work
+Allow: /#services
+Allow: /#about
+Allow: /#testimonials
+Allow: /#faq
+Allow: /#map
+Allow: /#contact
+Allow: /privacy-policy
+Allow: /thank-you
+
+# Disallow internal admin portal and API proxy routes
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://cinefolio.portfolio/sitemap.xml
